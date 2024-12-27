@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Recyclable Item</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+     
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0px;
+            background-image: url(image2.png);
+             height: 100%;
+             background-position: center;
+             background-repeat: no-repeat;
+             background-size: cover;
+           
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            background-color:#808080;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        textarea, input, button, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .description {
+            margin-bottom: 20px;
+        }
+        .trader-profiles {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        .trader {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+            opacity: 0.5;
+        }
+        .trader img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            object-fit: cover;
+        }
+        .trader.selected img {
+            border-color: #28a745;
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        .trader p {
+            margin-top: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #555;
+        }
+        select option {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+        }
+        select option img {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+         
+         header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #f9f9f9;
+            height: 70px; /* Set a fixed height */
+            padding: 10px 20px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #333;
+            width: 100%;
+            box-sizing: border-box; 
+        }
+
+        .logo { 
+            display: flex;
+            align-items: center;
+        } 
+
+        .logo i { 
+            font-size: 40px;
+            color: #FFFBE6;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #FFFBE6;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 6px 12px;
+            transition: background-color 0.3s, transform 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            border-radius: 5px;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+            font-weight: bold;
+        }
+
+        header h1 {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+     <!-- Header Section -->
+     <header>
+        <div class="logo">
+            <i class="fa-solid fa-recycle"></i>
+            <h2>Plastik</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fa-solid fa-house"></i>Home</a></li>
+                <li><a href="upload.html"><i class="fa-solid fa-upload"></i>Upload</a></li>
+                <li><a href="shop.html"><i class="fa-solid fa-cart-shopping"></i>Shop</a></li>
+                <li><a href="rewards.html"><i class="fa-solid fa-gift"></i>Rewards</a></li>
+                <li><a href="signin.html"><i class="fa-solid fa-user"></i>Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Upload Recyclable Item</h1>
+    <div class="container">
+        <form id="uploadForm">
+            <!-- File Upload Input -->
+            <label for="photo">Upload Photo:</label>
+            <input type="file" id="photo" accept="image/*" required>
+
+            <!-- Description Input -->
+            <div class="description">
+                <label for="productDescription">Product Description:</label>
+                <textarea id="productDescription" rows="3" placeholder="Describe your recyclable item here..." required></textarea>
+            </div>
+
+            <!-- Trader Selection Dropdown -->
+            <label for="traderSelect">Select a Trader:</label>
+            <select id="traderSelect" required>
+                <option value="" disabled selected>Select Trader</option>
+                <option value="Trader A - 2.5 km" data-index="0"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Trader A"> Trader A (2.5 km)</option>
+                <option value="Trader B - 3.8 km" data-index="1"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Trader B"> Trader B (3.8 km)</option>
+                <option value="Trader C - 4.1 km" data-index="2"><img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Trader C"> Trader C (4.1 km)</option>
+                <option value="Trader D - 5.0 km" data-index="3"><img src="https://randomuser.me/api/portraits/women/58.jpg" alt="Trader D"> Trader D (5.0 km)</option>
+            </select>
+
+            <!-- Submit Button -->
+            <button type="submit">Upload</button>
+        </form>
+
+        <!-- Trader Profiles -->
+        <div class="trader-profiles" id="traderProfiles">
+            <div class="trader" data-index="0">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Trader A">
+                <p>Trader A</p>
+            </div>
+            <div class="trader" data-index="1">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Trader B">
+                <p>Trader B</p>
+            </div>
+            <div class="trader" data-index="2">
+                <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Trader C">
+                <p>Trader C</p>
+            </div>
+            <div class="trader" data-index="3">
+                <img src="https://randomuser.me/api/portraits/women/58.jpg" alt="Trader D">
+                <p>Trader D</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const traderSelect = document.getElementById('traderSelect');
+        const traderProfiles = document.querySelectorAll('.trader');
+
+        // Highlight the selected trader when dropdown changes
+        traderSelect.addEventListener('change', function () {
+            const selectedIndex = this.options[this.selectedIndex].getAttribute('data-index');
+
+            traderProfiles.forEach(trader => {
+                trader.classList.remove('selected');
+                if (trader.getAttribute('data-index') === selectedIndex) {
+                    trader.classList.add('selected');
+                }
+            });
+        });
+
+        // Update dropdown when trader profile is clicked
+        traderProfiles.forEach(trader => {
+            trader.addEventListener('click', function () {
+                const index = this.getAttribute('data-index');
+                traderSelect.selectedIndex = parseInt(index) + 1;
+
+                traderProfiles.forEach(t => t.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(image4.png);
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .signup-container {
+            background:#808080;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: black;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-size: 14px;
+            color: #555;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group input:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        .signup-btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .signup-btn:hover {
+            background-color: #45a049;
+        }
+        .notification {
+            text-align: center;
+            margin-top: 20px;
+            color: #e74c3c;
+        }
+        .signin-link {
+            color: #3498db;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .signin-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signup-container">
+        <h2>Create an Account</h2>
+
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" placeholder="Enter your first name">
+        </div>
+        
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" placeholder="Enter your last name">
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password">
+        </div>
+
+        <button class="signup-btn" onclick="signUp()">Sign Up</button>
+
+        <div class="notification" id="notification"></div>
+    </div>
+
+    <script>
+        function signUp() {
+            var email = document.getElementById('email').value;
+
+            // Check if the email is already registered (for demo purposes)
+            // You can replace this logic with an actual backend check
+            var existingEmails = ["example1@example.com", "example2@example.com"]; // Example of existing accounts
+
+            if (existingEmails.includes(email)) {
+                document.getElementById('notification').innerHTML = 
+                    'Account already exists! <a href="signin.html" class="signin-link">Sign In</a>';
+                    
+            } else {
+                // If account doesn't exist, proceed with signup (this is just a demo)
+                document.getElementById('notification').innerHTML = 
+                    'Account created successfully!';
+                    setTimeout(function() {
+                         window.location.href = 'signin.html'; }, 2000);
+            }
+        }
+    </script>
+
+</body>
+</html>

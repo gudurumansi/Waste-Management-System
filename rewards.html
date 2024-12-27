@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewards System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+        body {
+           
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0px;
+            background-image: url(image4.png);
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            font-family:Arial, Helvetica, sans-serif;
+           font-size :40px;
+
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px; /* Space between cards */
+            padding: 20px;
+            max-width: 1000px; /* Limit container width to three cards per row */
+            margin: 0 auto;
+            margin-bottom: 50px;
+        }
+        .card {
+            perspective: 1000px;
+            width: 280px;
+            height: 350px;
+        }
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            
+        }
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            position: absolute;
+            width: 90%;
+            height: 100%;
+            backface-visibility: hidden;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            flex-direction: column;
+            background-color: #E1C16E; /* Updated background to blackish grey */
+
+        }
+        .card-front {
+            position: absolute;
+            width: 90%;
+            height: 100%;
+            backface-visibility: hidden;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 25px;
+            color: black;
+            font-weight: bold;
+            flex-direction: column;
+            background-color:#7393B3;
+            padding-top: 30px; /* Add space above the logo */
+        }
+        .card-back {
+            background-color: #7393B3;
+            color: #333;
+            transform: rotateY(180deg);
+            padding: 10px;
+            font-size: 23px;
+            font-family: 'Times New Roman', Times, serif;
+            width: 90%;
+            height: 100%;
+            
+        }
+        .card-front img {
+            width: 80px; /* Logo size */
+            height: auto;
+            margin-bottom: 30px; /* Increase space between logo and text */
+        }
+        .card-front p {
+            font-size: 200px; /* Increase the font size for the "Offer" text */
+        }
+        button {
+            margin-top: 110px;
+            padding: 8px 12px;
+            border: none;
+            background-color:green;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: medium;
+            width: 200px;
+            height: 45px;
+        }
+        button.disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #f9f9f9;
+            height: 70px; /* Set a fixed height */
+            padding: 10px 20px; /* Adjusted padding */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #333;
+            width: 100%; /* Ensure full width */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+
+        .logo { 
+            display: flex;
+            align-items: center;
+        } 
+
+        .logo i { 
+            font-size: 40px;
+            color: #FFFBE6;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #FFFBE6;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 6px 12px;
+            transition: background-color 0.3s, transform 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            border-radius: 5px;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+            font-weight: bold;
+        }
+
+        header h1 {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+     <!-- Header Section -->
+     <header>
+        <div class="logo">
+            <i class="fa-solid fa-recycle"></i>
+            <h2>Plastik</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fa-solid fa-house"></i>Home</a></li>
+                <li><a href="upload.html"><i class="fa-solid fa-upload"></i>Upload</a></li>
+                <li><a href="shop.html"><i class="fa-solid fa-cart-shopping"></i>Shop</a></li>
+                <li><a href="rewards.html"><i class="fa-solid fa-gift"></i>Rewards</a></li>
+                <li><a href="signin.html"><i class="fa-solid fa-user"></i>Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1 style="color: black;">Choose Your Reward</h1>
+    <div class="container">
+        <!-- BookMyShow Card -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://logodix.com/logo/2011021.png" alt="BookMyShow Logo" width="100" />
+                    BookMyShow Offer
+                    <button onclick="handleRedeem(this, 'BookMyShow')">Redeem</button>
+                </div>
+                <div class="card-back">
+                    <p>Get ₹200 off on movies.</p>
+                    <p>Valid for 7 days.</p>
+                </div>
+            </div>
+        </div>
+        <!-- ₹1000 Coupon Card -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="coupoun.png" alt="Coupon Logo" width="100" />
+                    ₹1000 worth Coupon
+                    <br>valid for 3 days
+                    <button onclick="handleRedirect('₹1000')">Redeem</button>
+                </div>
+                <div class="card-back">
+                    <p>Worth ₹1000.</p>
+                    <p>Valid for 15 days.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Zomato Card -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="zomato.png" alt="Zomato Logo" width="100" />
+                    Zomato Offer
+                    <button onclick="handleRedeem(this, 'Zomato')">Redeem</button>
+                </div>
+                <div class="card-back">
+                    <p>Flat ₹150 off on food orders.</p>
+                    <p>Valid for 5 days.</p>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Swiggy Card -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://companieslogo.com/img/orig/SWIGGY.NS.W-0fd3f6a3.png?t=1731987060" alt="Swiggy Logo" width="100" />
+                 Swiggy Offer
+                    <button onclick="handleRedeem(this, 'Swiggy')">Redeem</button>
+                </div>
+                <div class="card-back">
+                    <p>Free delivery on orders above ₹300.</p>
+                    <p>Valid for 3 days.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nykaa Card -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://www.cointab.net/wp-content/uploads/2022/08/Untitled-design-16-1.png" alt="Nykaa Logo" width="100" />
+                     Nykaa Offer
+                    <button onclick="handleRedeem(this, 'Nykaa')">Redeem</button>
+                </div>
+                <div class="card-back">
+                    <p>Flat ₹250 off on beauty products.</p>
+                    <p>Valid for 10 days.</p>
+                </div>
+            </div>
+        </div>
+         <!-- ₹300 Coupon Card -->
+         <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="coupoun.png" alt="Coupon Logo" width="100" />
+                    ₹300 worth Coupon
+                    <br>valid for 9 days
+                    <button onclick="handleRedirect('₹300')">Redeem</button>
+                </div>
+                <div class="card-back">
+                    <p>Worth ₹300.</p>
+                    <p>Valid for 7 days.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Airtel Card (Replacing MamaEarth) -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="airtel.png" alt="Airtel Logo" width="100" />
+                     Airtel Offer
+                    <button onclick="handleRedeem(this, 'Airtel')">Redeem</button>
+                </div>
+                <div class="card-back">
+                    <p>Get ₹50 off on your next mobile recharge.</p>
+                    <p>Valid for 5 days.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lenskart Card (Replacing Cashback Offer) -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="https://hirehunch.com/image/success-story/lenskart-logo.png" alt="Lenskart Logo" width="100" />
+                     Lenskart Offer
+                    <button onclick="handleRedeem(this, 'Lenskart')">Redeem</button>
+                </div>
+                <div class="card-back">
+                    <p>Get ₹500 off on eyewear.</p>
+                    <p>Valid for 7 days.</p>
+                </div>
+            </div>
+        </div>
+
+          
+
+        <!-- ₹500 Coupon Card -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="coupoun.png" alt="Coupon Logo" width="100" />
+                    ₹500 worth Coupon
+                    <br>valid for 7 days
+
+                    <button onclick="handleRedirect('₹500')">Redeem</button>
+                </div>
+                <div class="card-back">
+                    <p>Worth ₹500.</p>
+                    <p>Valid for 10 days.</p>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <script>
+        let rewardClaimed = false;
+
+        function handleRedeem(button, rewardName) {
+            if (rewardClaimed) {
+                alert("You can only choose one reward!");
+                return;
+            }
+
+            rewardClaimed = true;
+
+            // Flip only the card containing the clicked button
+            const card = button.closest('.card');
+            card.classList.add('flipped');
+
+            // Disable all buttons
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => btn.classList.add('disabled'));
+
+            alert(`You have redeemed the ${rewardName} reward!`);
+        }
+
+        function handleRedirect(couponValue) {
+            if (rewardClaimed) {
+                alert("You can only choose one reward!");
+                return;
+            }
+
+            rewardClaimed = true;
+            alert(`You have redeemed the ${couponValue} Coupon! Redirecting to Shop...`);
+            window.location.href = "shop.html";
+        }
+    </script>
+
+</body>
+</html>
