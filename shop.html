@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recyclable Items Shop</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="shopstyle.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+        <i class="fa-solid fa-recycle"></i>
+        <h2>Plastik</h2>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="upload.html"><i class="fa-solid fa-upload"></i> Upload</a></li>
+            <li><a href="rewards.html"><i class="fa-solid fa-gift"></i> Rewards</a></li>
+            <li><a href="shop.html"><i class="fa-solid fa-cart-shopping"></i> Shop</a></li>
+            
+            <li><a href="signin.html"><i class="fa-solid fa-user"></i> Profile</a></li>
+        </ul>
+    </nav>
+</header>
+<br>
+<br>
+
+    <h1 style="text-align:center">Eco-Friendly Shop</h1>
+
+
+  <section class="products">
+    <h2>Our Recyclable Products</h2>
+    <br>
+    <br>
+    <div class="product-list">
+      <div class="product-item">
+        <img class="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYTEXL9dGFo2I42aTrhYzTzLsx5CyM4DctUQ&s" alt="Recycle Bag">
+        <h3>Recyclable Shopping Bag</h3>
+        <p>₹50</p>
+        <button onclick="addToCart('Recyclable Shopping Bag', 50)">Add to Cart</button>
+      </div>
+      <div class="product-item">
+        <img class="image"src="https://imagecdn.99acres.com//microsite/wp-content/blogs.dir/6161/files/2023/06/glass-craft.png" alt="Glass Bottle">
+        <h3>Reusable Glass Bottle</h3>
+        <p>₹240</p>
+        <button onclick="addToCart('Reusable Glass Bottle', 240)">Add to Cart</button>
+      </div>
+      <div class="product-item">
+        <img class="image"src="https://img.sheroes.in/img/uploads/sheroespage/logoes/1517993979cardboard-tube-monster.jpg" alt="Pen Stand">
+        <h3>Reusable Pen Stand</h3>
+        <p>₹120</p>
+        <button onclick="addToCart('Reusable Pen Stand', 120)">Add to Cart</button>
+      </div>
+      <div class="product-item">
+        <img class="image"src="https://pbs.twimg.com/media/EYYvFXBVAAMkuYm.jpg:large" alt="Wall Hanging">
+        <h3>Wall Hangings</h3>
+        <p>₹150</p>
+        <button onclick="addToCart('Wall Hangings', 150)">Add to Cart</button>
+      </div>
+      <div class="product-item">
+        <img class="image" src="https://www.fevicreate.com/o/commerce-media/accounts/795597346/images/630996447?download=false" alt="Mirror Hanging">
+        <h3>Mirror Hangings</h3>
+        <p>₹180</p>
+        <button onclick="addToCart('Mirror Hangings', 180)">Add to Cart</button>
+      </div>
+      <div class="product-item">
+        <img  class="image"src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYnuk7shNUNXe5T56Rj8p3xp_3TabxoL0KQQ&s" alt="Flower Pots">
+        <h3>Flower Pots</h3>
+        <p>₹200</p>
+        <button onclick="addToCart('Flower Pots', 200)">Add to Cart</button>
+      </div>
+      <div class="product-item">
+        <img  class="image"src="https://i.pinimg.com/736x/97/11/f8/9711f841dd97405b12b30dc61ba52ded.jpg" alt="Plant Hangers">
+        <h3>Plant Hangers</h3>
+        <p>₹130</p>
+        <button onclick="addToCart('Plant Hangers',130 )">Add to Cart</button>
+      </div>
+      <div class="product-item">
+        <img  class="image"src="https://www.fevicreate.com/o/commerce-media/accounts/795597346/images/575482750?download=false" alt="Glass Bottle">
+        <h3>Photo Frame</h3>
+        <p>₹80</p>
+        <button onclick="addToCart('Photo Frame', 80)">Add to Cart</button>
+      </div>
+  <div class="product-item">
+    <img  class="image"src="https://nvshq.org/wp-content/uploads/2019/03/glass-painted-bottle.jpg" alt="Decorative Bottles ">
+    <h3>Decorative Bottles</h3>
+    <p>₹300</p>
+    <button onclick="addToCart('Decorative Bottles',300)">Add to Cart</button>
+  </div>
+</div>
+  </section>
+</div>
+<div class="cart">
+<a href="cart.html">Cart</a>
+</div>
+
+  <script src="shopscript.js"></script>
+</body>
+</html>
