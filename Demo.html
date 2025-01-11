@@ -1,0 +1,34 @@
+<html ng-app="myApp">
+<head>
+<title>Data Hiding in AngularJS</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+</script>
+<script>
+// Create AngularJS module and controller
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+// Initialize visibility flag
+$scope.isVisible = false;
+});
+</script>
+</head>
+<body ng-controller="myCtrl">
+
+<h2>AngularJS Data Hiding Example</h2>
+
+<!-- Button to toggle visibility -->
+<button ng-click="isVisible = !isVisible">Toggle Message</button>
+
+<!-- Paragraph that will be shown/hidden based on the isVisible flag -->
+
+29
+
+<p ng-show="isVisible">This is a toggleable message that will appear when you
+click the button.</p>
+
+<!-- Another way to hide using ng-hide -->
+<p ng-hide="isVisible">This is another message that is hidden when isVisible
+is false.</p>
+
+</body>
+</html>
