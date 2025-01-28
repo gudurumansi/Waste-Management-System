@@ -145,3 +145,27 @@ nav ul li a {
             color: #FFFBE6;
             margin-right: 10px;
         }
+ .cart {
+          position: relative; /* Ensures the button's absolute positioning is relative to this container */
+          margin-bottom: 30px;
+        }
+        
+        .cart button {
+          position: absolute; /* Moves the button out of normal flow */
+          left: 1420px; /* Moves it 20px from the left edge of the container */
+          background-color: #45a049;
+          color: white;
+          border: none;
+          padding: 0.5rem 1rem;
+          cursor: pointer;
+          font-size: large;
+          border-radius: 4px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cart button:hover {
+          background-color: rgb(109, 205, 214);
+          box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+          transform: translateY(-2px);
+        }
+        
